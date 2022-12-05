@@ -18,7 +18,7 @@ jobs:
       ENABLE_CREDENTIALS: false
       ENABLE_MFE: true
       ENABLE_LICENSE_MANAGER: false
-      SUBDOMAIN: new
+      SUBDOMAIN: staging
       DOMAIN_NAME: app.turnthebus.org
       SITE_NAME: ttb
       AWS_REGION: ap-south-1

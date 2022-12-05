@@ -29,8 +29,8 @@ cookiecutter --checkout $GITHUB_BRANCH \
              global_account_id=293205054626 \
              global_root_domain=app.turnthebus.org \
              global_aws_route53_hosted_zone_id=Z0540686GYG3QL4XM567 \
-             environment_name=live \
-             environment_subdomain=new \
+             environment_name=prod \
+             environment_subdomain=staging \
              eks_worker_group_instance_type=t3.xlarge \
              eks_worker_group_min_size=0 \
              eks_worker_group_max_size=1 \
@@ -42,6 +42,8 @@ cookiecutter --checkout $GITHUB_BRANCH \
              mysql_instance_class=db.t2.small \
              mysql_allocated_storage=10 \
              redis_node_type=cache.t2.small \
-             stack_add_bastion=N \
-             stack_add_remote_mongodb=N \
+             stack_add_bastion=Y \
+             stack_add_remote_mongodb=Y \
+             mongodb_instance_type=t3.medium \
+             mongodb_allocated_storage=10 \
              

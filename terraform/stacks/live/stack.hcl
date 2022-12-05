@@ -19,8 +19,14 @@ locals {
 
   redis_node_type      = "cache.t2.small"
 
+  # MongoDB EC2 instance sizing
+  mongodb_instance_type    = "t3.medium"
+  mongodb_allocated_storage = 10
   
 
+  # Bastion EC2 instance sizing
+  bastion_instance_type    = "t3.micro"
+  bastion_allocated_storage = 20
   
 
   #----------------------------------------------------------------------------

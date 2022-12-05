@@ -1,0 +1,63 @@
+#------------------------------------------------------------------------------
+# written by: mcdaniel
+# date: june-2022
+#
+# usage: top-level workflow. Initiated manually from Github Actions console page
+#        Builds all Docker containers.
+#------------------------------------------------------------------------------
+name: Build Optional Containers
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ENABLE_BACKUP: false
+      ENABLE_CREDENTIALS: false
+      ENABLE_MFE: true
+      ENABLE_LICENSE_MANAGER: false
+      SUBDOMAIN: new
+      DOMAIN_NAME: app.turnthebus.org
+      SITE_NAME: ttb
+      AWS_REGION: ap-south-1
+
+    steps:
+      - uses: actions/checkout@v3.0.2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Initialize environment
+        uses: openedx-actions/tutor-k8s-init@v1.0.4
+
+      - name: Build Backup
+        if: ${{ env.ENABLE_BACKUP == 'true' }}
+        uses: openedx-actions/tutor-plugin-build-backup@v0.1.7
+
+      - name: Build Credentials
+        if: ${{ env.ENABLE_CREDENTIALS == 'true' }}
+        uses: openedx-actions/tutor-plugin-build-credentials@v1.0.0
+        with:
+          version: latest
+          aws-ecr-repo: openedx_credentials
+
+      - name: Build MFE
+        if: ${{ env.ENABLE_MFE == 'true' }}
+        uses: openedx-actions/tutor-plugin-build-mfe@v0.1.5
+        with:
+          subdomain: ${SUBDOMAIN}
+          domain-name: ${DOMAIN_NAME}
+          site-name: ${SITE_NAME}
+
+      - name: Build License Manager
+        if: ${{ env.ENABLE_LICENSE_MANAGER == 'true' }}
+        uses: openedx-actions/tutor-plugin-build-license-manager@v0.0.2

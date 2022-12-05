@@ -19,7 +19,7 @@ locals {
 
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 4.13"
+  version = "~> 4.16"
 
   name        = local.name
   description = "openedx_devops: Allow access to MySQL"

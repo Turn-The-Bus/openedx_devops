@@ -22,7 +22,7 @@ resource "aws_db_subnet_group" "mysql_subnet_group" {
 
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 4.13"
+  version = "~> 4.16"
 
   name        = "${var.resource_name}-mysql"
   description = "openedx_devops: Allow access to MySQL"
@@ -61,7 +61,7 @@ module "security_group" {
 #------------------------------------------------------------------------------
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
-  version = "~> 5.1"
+  version = "~> 5.2"
 
   # required parameters (unless we like the default value)
   # ---------------------------------------------------------------------------

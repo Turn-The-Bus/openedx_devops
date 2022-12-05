@@ -23,7 +23,7 @@ data "aws_route53_zone" "environment_domain" {
 
 module "acm_root_domain_environment_region" {
   source  = "terraform-aws-modules/acm/aws"
-  version = "~> 4.1"
+  version = "~> 4.3"
 
   providers = {
     aws = aws.environment_region
@@ -42,7 +42,7 @@ module "acm_root_domain_environment_region" {
 
 module "acm_environment_environment_region" {
   source  = "terraform-aws-modules/acm/aws"
-  version = "~> 4.1"
+  version = "~> 4.3"
 
   providers = {
     aws = aws.environment_region

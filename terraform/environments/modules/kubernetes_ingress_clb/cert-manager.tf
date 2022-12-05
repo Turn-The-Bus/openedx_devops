@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 module "cert_manager_irsa" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "~> 5.5"
+  version                       = "~> 5.9"
   create_role                   = true
   role_name                     = "${var.namespace}-cert_manager-irsa"
   provider_url                  = replace(data.aws_eks_cluster.eks.identity[0].oidc[0].issuer, "https://", "")
@@ -41,7 +41,7 @@ resource "helm_release" "cert-manager" {
 
   chart      = "cert-manager"
   repository = "https://charts.jetstack.io"
-  version    = "~> 1.8"
+  version    = "~> 2.4"
   values = [
     data.template_file.cert-manager-values.rendered
   ]

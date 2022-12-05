@@ -9,7 +9,7 @@
 
 module "openedx_storage" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.4"
+  version = "~> 3.6"
 
   bucket = var.resource_name_storage
   acl    = "private"
@@ -27,7 +27,7 @@ module "openedx_storage" {
 
 module "openedx_backup" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.4"
+  version = "~> 3.6"
 
   bucket = var.resource_name_backup
   acl    = "private"
@@ -36,7 +36,7 @@ module "openedx_backup" {
 
 module "openedx_secrets" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.4"
+  version = "~> 3.6"
 
   bucket = var.resource_name_secrets
   acl    = "private"

@@ -106,27 +106,27 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `Terraform <https://www.terraform.io/>`_
     - ~> 1.2
   * - `terraform-aws-modules/acm <https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/latest>`_
-    - ~> 4.1
+    - ~> 4.3
   * - `terraform-aws-modules/cloudfront <https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/latest>`_
-    - ~> 3.0
+    - ~> 3.1
   * - `terraform-aws-modules/eks <https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest>`_
-    - ~> 18.30
+    - ~> 19.00
   * - `terraform-aws-modules/iam <https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest>`_
-    - ~> 5.5
+    - ~> 5.9
   * - `terraform-aws-modules/rds <https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest>`_
-    - ~> 5.1
+    - ~> 5.2
   * - `terraform-aws-modules/s3-bucket <https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/latest>`_
-    - ~> 3.4
+    - ~> 3.6
   * - `terraform-aws-modules/security-group <https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest>`_
-    - ~> 4.13
+    - ~> 4.16
   * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
     - ~> 3.18
   * - Terraform `Helm cert-manager <https://charts.jetstack.io>`_
-    - ~> 1.8
+    - ~> 2.4
   * - Terraform `Kubernetes Provider <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
-    - ~> 2.14
+    - ~> 2.16
   * - Terraform `AWS Provider <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
-    - ~> 4.36
+    - ~> 4.45
   * - Terraform `Local Provider <https://registry.terraform.io/providers/hashicorp/local/latest/docs>`_
     - ~> 2.2
   * - Terraform `Random Provider <https://registry.terraform.io/providers/hashicorp/random/latest/docs>`_

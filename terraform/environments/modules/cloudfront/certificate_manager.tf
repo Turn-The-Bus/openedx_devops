@@ -22,7 +22,7 @@ provider "aws" {
 
 module "acm_environment_domain" {
   source  = "terraform-aws-modules/acm/aws"
-  version = "~> 4.1"
+  version = "~> 4.3"
 
   providers = {
     aws = aws.us-east-1

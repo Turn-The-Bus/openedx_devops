@@ -5,7 +5,7 @@
 # date: Aug-2022
 #
 # usage: installs Karpenter scaling service.
-# see: https://karpenter.sh/v0.13.2/getting-started/getting-started-with-terraform/
+# see: https://karpenter.sh/v0.19.3/getting-started/getting-started-with-terraform/
 #
 # requirements: you must initialize a local helm repo in order to run
 # this mdoule.
@@ -25,7 +25,7 @@ resource "helm_release" "karpenter" {
   name       = "karpenter"
   repository = "https://charts.karpenter.sh"
   chart      = "karpenter"
-  version    = "v0.13.2"
+  #version    = "v0.19.3"
 
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
@@ -34,7 +34,7 @@ resource "helm_release" "karpenter" {
 
   set {
     name  = "clusterName"
-    value = module.eks.cluster_id
+    value = module.eks.cluster_name
   }
 
   set {
@@ -72,7 +72,7 @@ module "karpenter_controller_irsa_role" {
   create_role                        = true
   attach_karpenter_controller_policy = true
 
-  karpenter_controller_cluster_id = module.eks.cluster_id
+  karpenter_controller_cluster_id = module.eks.cluster_name
   karpenter_controller_node_iam_role_arns = [
     module.eks.eks_managed_node_groups["karpenter"].iam_role_arn,
     module.eks.eks_managed_node_groups["k8s_nodes_idle"].iam_role_arn

@@ -63,7 +63,7 @@ resource "aws_security_group" "all_worker_mgmt" {
 
 module "eks" {
   source                          = "terraform-aws-modules/eks/aws"
-  version                         = "~> 18.30"
+  version                         = "~> 19.00"
   cluster_name                    = var.namespace
   cluster_version                 = var.kubernetes_cluster_version
   cluster_endpoint_private_access = true
@@ -111,12 +111,6 @@ module "eks" {
     }
   }
 
-  eks_managed_node_group_defaults = {
-    iam_role_additional_policies = [
-      "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
-    ]
-  }
-
   eks_managed_node_groups = {
     # -------------------------------------------------------------------------
     # 1.) Static node group, configured for extended platform idle states.
@@ -148,7 +142,7 @@ module "eks" {
     # -------------------------------------------------------------------------
     # 2.) Dynamic node group, for scaling.
     # -------------------------------------------------------------------------
-    # This node group is managed by Karpenter. There must be at least
+    # This node group is managed by Karpenter. There must be at least one 
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms
     # perform more effectively with larger instance types. The Cookiecutter
@@ -163,6 +157,12 @@ module "eks" {
       desired_size      = var.eks_karpenter_group_desired_size
       min_size          = var.eks_karpenter_group_min_size
       max_size          = var.eks_karpenter_group_max_size
+
+      iam_role_additional_policies = {
+        # Required by Karpenter
+        AmazonSSMManagedInstanceCore = "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
+
       instance_types    = ["${var.eks_karpenter_group_instance_type}"]
       tags = merge(
         var.tags,

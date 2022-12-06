@@ -16,8 +16,8 @@ jobs:
     env:
       AWS_REGION: ap-south-1
 
-      CUSTOM_THEME_REPOSITORY: edx-theme-example
-      CUSTOM_THEME_REPOSITORY_ORGANIZATION: lpm0073
+      CUSTOM_THEME_REPOSITORY: turnthebus-edx-theme
+      CUSTOM_THEME_REPOSITORY_ORGANIZATION: Turn-The-Bus
       CUSTOM_THEME_REPOSITORY_REF: main
 
     steps:
@@ -47,7 +47,7 @@ jobs:
           repository-ref: ${{ env.CUSTOM_THEME_REPOSITORY_REF }}
           # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
           #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
+          repository-token: ${{ secrets.PAT }}
           #----------------------------------------------
 
       #------------------------------------------------------------------------
@@ -61,23 +61,28 @@ jobs:
       # note that `repository-token` is optional and is only needed for
       # private repositories
       #------------------------------------------------------------------------
-      - name: Add an edx plugin
+      - name: Add turnthebus-edx-plugin
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
         with:
-          repository: openedx-plugin-example
-          repository-organization: lpm0073
+          repository: turnthebus-edx-plugin
+          repository-organization: Turn-The-Bus
           repository-ref: main
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
+          repository-token: ${{ secrets.PAT }}
 
-      - name: Add an Xblock
+      - name: Add turnthebus-analytics-plugin
         uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
         with:
-          repository: edx-ora2
-          repository-organization: openedx
-          repository-ref: master
+          repository: turnthebus-analytics-plugin
+          repository-organization: Turn-The-Bus
+          repository-ref: main
+          repository-token: ${{ secrets.PAT }}
+
+      #- name: Add an Xblock
+      #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
+      #  with:
+      #    repository: edx-ora2
+      #    repository-organization: openedx
+      #    repository-ref: master
           # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
           #----------------------------------------------
           #repository-token: ${{ secrets.PAT }}

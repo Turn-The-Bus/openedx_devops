@@ -61,13 +61,13 @@ jobs:
       # note that `repository-token` is optional and is only needed for
       # private repositories
       #------------------------------------------------------------------------
-      - name: Add turnthebus-edx-plugin
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
-        with:
-          repository: turnthebus-edx-plugin
-          repository-organization: Turn-The-Bus
-          repository-ref: main
-          repository-token: ${{ secrets.PAT }}
+      #- name: Add turnthebus-edx-plugin
+      #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
+      #  with:
+      #    repository: turnthebus-edx-plugin
+      #    repository-organization: Turn-The-Bus
+      #    repository-ref: main
+      #    repository-token: ${{ secrets.PAT }}
 
       #- name: Add turnthebus-analytics-plugin
       #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3

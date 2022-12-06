@@ -225,15 +225,12 @@ resource "random_integer" "subnet_id" {
   max = 2
 }
 
-
-
 data "aws_security_group" "stack-namespace-node" {
-
   tags = {
     Name = "${var.stack_namespace}-node"
   }
-
 }
+
 
 # create a dedicated security group for the bastion that
 # only allows public ssh access.

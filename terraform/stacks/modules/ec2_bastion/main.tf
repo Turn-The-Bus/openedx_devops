@@ -20,8 +20,7 @@ resource "aws_instance" "bastion" {
 
   vpc_security_group_ids = [
     resource.aws_security_group.sg_bastion.id,
-    data.aws_security_group.stack-namespace-node.id,
-    data.aws_security_group.k8s_nodes_idle-eks-node-group.id
+    data.aws_security_group.stack-namespace-node.id
   ]
 
   root_block_device {
@@ -226,13 +225,7 @@ resource "random_integer" "subnet_id" {
   max = 2
 }
 
-data "aws_security_group" "k8s_nodes_idle-eks-node-group" {
 
-  tags = {
-    Name = "k8s_nodes_idle-eks-node-group"
-  }
-
-}
 
 data "aws_security_group" "stack-namespace-node" {
 
@@ -279,11 +272,9 @@ resource "aws_eip" "elasticip" {
 
 resource "aws_route53_record" "bastion" {
   zone_id = data.aws_route53_zone.stack.id
-  name    = "bastion.${var.root_domain}"
+  name    = "bastion2.${var.root_domain}"
   type    = "A"
   ttl     = "600"
-
-
   records = [aws_eip.elasticip.public_ip]
 }
 

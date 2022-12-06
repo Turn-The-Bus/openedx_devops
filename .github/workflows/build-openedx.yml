@@ -69,24 +69,13 @@ jobs:
           repository-ref: main
           repository-token: ${{ secrets.PAT }}
 
-      - name: Add turnthebus-analytics-plugin
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
-        with:
-          repository: turnthebus-analytics-plugin
-          repository-organization: Turn-The-Bus
-          repository-ref: main
-          repository-token: ${{ secrets.PAT }}
-
-      #- name: Add an Xblock
+      #- name: Add turnthebus-analytics-plugin
       #  uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
       #  with:
-      #    repository: edx-ora2
-      #    repository-organization: openedx
-      #    repository-ref: master
-          # UN-COMMENT THIS IF YOUR REPO IS PRIVATE.
-          #----------------------------------------------
-          #repository-token: ${{ secrets.PAT }}
-          #----------------------------------------------
+      #    repository: turnthebus-analytics-plugin
+      #    repository-organization: Turn-The-Bus
+      #    repository-ref: main
+      #    repository-token: ${{ secrets.PAT }}
 
       #------------------------------------------------------------------------
       # Build and upload the Docker container

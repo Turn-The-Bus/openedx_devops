@@ -77,16 +77,8 @@ jobs:
       #    repository-ref: main
       #    repository-token: ${{ secrets.PAT }}
 
-      - name: Add an Xblock
-        uses: openedx-actions/tutor-plugin-build-openedx-add-requirement@v1.0.3
-        with:
-          repository: edx-ora2
-          repository-organization: openedx
-          repository-ref: master
-          repository-token: ${{ secrets.PAT }}
-
       #------------------------------------------------------------------------
       # Build and upload the Docker container
       #------------------------------------------------------------------------
       - name: Build openedx
-        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.0
+        uses: openedx-actions/tutor-plugin-build-openedx@v1.0.2

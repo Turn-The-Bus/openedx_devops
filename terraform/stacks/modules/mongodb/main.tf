@@ -39,7 +39,7 @@ resource "aws_instance" "mongodb" {
   vpc_security_group_ids = [
     aws_security_group.sg_mongodb.id,
     data.aws_security_group.stack-namespace-node.id,
-    data.aws_security_group.k8s_nodes.id,
+    data.aws_security_group.k8s_nodes.id
   ]
 
   root_block_device {
@@ -285,7 +285,7 @@ data "kubernetes_secret" "bastion_ssh_key" {
 
 data "aws_security_group" "k8s_nodes" {
   tags = {
-    Name = "ttb-india-live-node"
+    Name = "${var.stack_namespace}-node"
   }
 }
 

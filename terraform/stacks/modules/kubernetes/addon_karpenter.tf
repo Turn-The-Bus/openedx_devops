@@ -25,6 +25,8 @@ resource "helm_release" "karpenter" {
   name       = "karpenter"
   repository = "https://charts.karpenter.sh"
   chart      = "karpenter"
+
+  # mcdaniel dec-2022: trying latest stable
   #version    = "v0.19.3"
 
   set {
@@ -34,7 +36,7 @@ resource "helm_release" "karpenter" {
 
   set {
     name  = "clusterName"
-    value = module.eks.cluster_name
+    value = module.eks.cluster_id
   }
 
   set {
@@ -72,7 +74,7 @@ module "karpenter_controller_irsa_role" {
   create_role                        = true
   attach_karpenter_controller_policy = true
 
-  karpenter_controller_cluster_id = module.eks.cluster_name
+  karpenter_controller_cluster_id = module.eks.cluster_id
   karpenter_controller_node_iam_role_arns = [
     module.eks.eks_managed_node_groups["karpenter"].iam_role_arn,
     module.eks.eks_managed_node_groups["k8s_nodes_idle"].iam_role_arn

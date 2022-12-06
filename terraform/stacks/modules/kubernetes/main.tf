@@ -142,7 +142,7 @@ module "eks" {
     # -------------------------------------------------------------------------
     # 2.) Dynamic node group, for scaling.
     # -------------------------------------------------------------------------
-    # This node group is managed by Karpenter. There must be at least one 
+    # This node group is managed by Karpenter. There must be at least
     # node in this group at all times in order for Karpenter to monitor
     # load and act on metrics data. Karpenter's bin packing algorithms
     # perform more effectively with larger instance types. The Cookiecutter
@@ -163,7 +163,7 @@ module "eks" {
         AmazonSSMManagedInstanceCore = "arn:${local.partition}:iam::aws:policy/AmazonSSMManagedInstanceCore"
       }
 
-      instance_types    = ["${var.eks_karpenter_group_instance_type}"]
+      instance_types = ["${var.eks_karpenter_group_instance_type}"]
       tags = merge(
         var.tags,
         { Name = "eks-${var.shared_resource_identifier}-karpenter" }

@@ -122,7 +122,7 @@ This repository was generated using `Cookiecutter <https://cookiecutter.readthed
   * - `terraform-aws-modules/vpc <https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest>`_
     - ~> 3.18
   * - Terraform `Helm cert-manager <https://charts.jetstack.io>`_
-    - ~> 2.4
+    - 1.9
   * - Terraform `Kubernetes Provider <https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs>`_
     - ~> 2.16
   * - Terraform `AWS Provider <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
@@ -186,7 +186,7 @@ Set your `production environment parameters <terraform/environments/prod/env.hcl
 
   # AWS infrastructure sizing
 
-  mysql_instance_class            = "db.t2.small"
+  mysql_instance_class            = "db.t2.large"
   redis_node_type                 = "cache.t2.small"
   eks_worker_group_instance_type  = "t3.xlarge"
 

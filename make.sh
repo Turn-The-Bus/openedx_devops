@@ -39,7 +39,7 @@ cookiecutter --checkout $GITHUB_BRANCH \
              eks_karpenter_group_min_size=3 \
              eks_karpenter_group_max_size=10 \
              eks_karpenter_group_desired_size=3 \
-             mysql_instance_class=db.t2.small \
+             mysql_instance_class=db.t2.large \
              mysql_allocated_storage=10 \
              redis_node_type=cache.t2.small \
              stack_add_bastion=Y \

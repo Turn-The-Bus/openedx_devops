@@ -7,7 +7,7 @@
 # usage: create an EKS cluster
 #------------------------------------------------------------------------------
 terraform {
-  required_version = "~> 1.2"
+  required_version = "~> 1.3"
 
   required_providers {
     local = "~> 2.2"
@@ -27,6 +27,11 @@ terraform {
     helm = {
       source  = "hashicorp/helm"
       version = "~> 2.7"
+    }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.16"
     }
   }
 

@@ -237,8 +237,7 @@ jobs:
       - name: Configure 3rd Party Authentication
         shell: bash
         run:  |-
-          tutor config save --set ENABLE_WEB_PROXY=false \
-                            --set RUN_ELASTICSEARCH=false
+          tutor config save --set ENABLE_WEB_PROXY=false
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0

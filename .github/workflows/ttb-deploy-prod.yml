@@ -5,7 +5,7 @@
 # usage: top-level workflow. Initiated manually from Github Actions console page
 #        Deploys a Tutor-created openedx Docker image to the Kubernetes cluster.
 #------------------------------------------------------------------------------
-name: TTB Deploy ttb prod
+name: TTB Deploy prod
 
 on:
   workflow_dispatch:
@@ -233,6 +233,11 @@ jobs:
         run:  |-
           tutor config save --set OPENEDX_FACEBOOK_APP_ID="${{ inputs.facebook-app-id }}" \
                             --set OPENEDX_FACEBOOK_APP_SECRET="${{ inputs.facebook-app-secret }}"
+
+      - name: Configure 3rd Party Authentication
+        shell: bash
+        run:  |-
+          tutor config save --set ENABLE_WEB_PROXY=false
 
       - name: Dump tutor config
         uses: openedx-actions/tutor-print-dump@v1.0.0

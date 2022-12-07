@@ -7,7 +7,7 @@
 # usage: create an EC2 instance with ssh access and a DNS record.
 #------------------------------------------------------------------------------
 terraform {
-  required_version = "~> 1.2"
+  required_version = "~> 1.3"
 
   required_providers {
     local = {

@@ -5,7 +5,7 @@
 # usage: top-level workflow. Initiated manually from Github Actions console page
 #        Builds all Docker containers.
 #------------------------------------------------------------------------------
-name: Build Optional Containers
+name: TTB Build Optional Containers
 
 on:
   workflow_dispatch:
@@ -14,9 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      ENABLE_MFE: true
+
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
-      ENABLE_MFE: true
       ENABLE_LICENSE_MANAGER: false
       SUBDOMAIN: cc
       DOMAIN_NAME: turnthebus.org

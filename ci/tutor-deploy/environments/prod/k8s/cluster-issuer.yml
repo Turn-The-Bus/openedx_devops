@@ -15,7 +15,7 @@ metadata:
   namespace: ttb-india-prod
 spec:
   acme:
-    email: no-reply@app.turnthebus.org
+    email: no-reply@turnthebus.org
     privateKeySecretRef:
       name: letsencrypt
     server: https://acme-v02.api.letsencrypt.org/directory
@@ -25,4 +25,4 @@ spec:
           # for the environment domain.
           route53:
             region: ap-south-1
-            hostedZoneID: Z0540686GYG3QL4XM567
+            hostedZoneID: Z03502332QN1JJS64O426

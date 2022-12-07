@@ -1,2 +1,2 @@
-LMS_HOSTNAME=staging.app.turnthebus.org
-CMS_HOSTNAME=studio.staging.app.turnthebus.org
+LMS_HOSTNAME=cc.turnthebus.org
+CMS_HOSTNAME=studio.cc.turnthebus.org

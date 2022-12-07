@@ -19,10 +19,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "grafana.staging.app.turnthebus.org"
+    - "grafana.cc.turnthebus.org"
     secretName: wild-openedx-prod-tls
   rules:
-  - host: grafana.staging.app.turnthebus.org
+  - host: grafana.cc.turnthebus.org
     http:
       paths:
       - path: /

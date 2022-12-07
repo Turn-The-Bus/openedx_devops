@@ -16,15 +16,15 @@ terraform {
     }
     random = {
       source  = "hashicorp/random"
-      version = "~> 3.3"
+      version = "~> 3.4"
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.25"
+      version = "~> 4.45"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "~> 2.12"
+      version = "~> 2.16"
     }
   }
 }

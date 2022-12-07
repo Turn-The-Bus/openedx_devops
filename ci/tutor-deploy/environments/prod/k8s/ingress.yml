@@ -27,11 +27,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "staging.app.turnthebus.org"
-    - "*.staging.app.turnthebus.org"
+    - "cc.turnthebus.org"
+    - "*.cc.turnthebus.org"
     secretName: wild-openedx-prod-tls
   rules:
-  - host: staging.app.turnthebus.org
+  - host: cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -41,7 +41,7 @@ spec:
             name: lms
             port:
               number: 8000
-  - host: studio.staging.app.turnthebus.org
+  - host: studio.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -51,7 +51,7 @@ spec:
             name: cms
             port:
               number: 8000
-  - host: discovery.staging.app.turnthebus.org
+  - host: discovery.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -62,7 +62,7 @@ spec:
             port:
               number: 8000
 
-  - host: notes.staging.app.turnthebus.org
+  - host: notes.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -73,7 +73,7 @@ spec:
             port:
               number: 8120
 
-  - host: apps.staging.app.turnthebus.org
+  - host: apps.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -84,7 +84,7 @@ spec:
             port:
               number: 8002
 
-  - host: ecommerce.staging.app.turnthebus.org
+  - host: ecommerce.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -94,7 +94,7 @@ spec:
             name: ecommerce
             port:
               number: 8000
-  - host: orders.staging.app.turnthebus.org
+  - host: orders.cc.turnthebus.org
     http:
       paths:
       - path: /
@@ -105,7 +105,7 @@ spec:
             port:
               number: 8002
 
-  - host: subscriptions.staging.app.turnthebus.org
+  - host: subscriptions.cc.turnthebus.org
     http:
       paths:
       - path: /

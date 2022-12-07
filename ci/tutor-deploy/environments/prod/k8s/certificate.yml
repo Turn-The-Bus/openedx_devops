@@ -16,6 +16,6 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt
-  commonName: staging.app.turnthebus.org
+  commonName: cc.turnthebus.org
   dnsNames:
-    - "*.staging.app.turnthebus.org"
+    - "*.cc.turnthebus.org"

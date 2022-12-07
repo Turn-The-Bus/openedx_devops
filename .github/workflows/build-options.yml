@@ -14,12 +14,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ENABLE_MFE: true
       ENABLE_BACKUP: false
       ENABLE_CREDENTIALS: false
+      ENABLE_MFE: true
       ENABLE_LICENSE_MANAGER: false
-      SUBDOMAIN: staging
-      DOMAIN_NAME: app.turnthebus.org
+      SUBDOMAIN: cc
+      DOMAIN_NAME: turnthebus.org
       SITE_NAME: ttb
       AWS_REGION: ap-south-1
 

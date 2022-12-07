@@ -11,7 +11,7 @@ locals {
   platform_name              = "ttb"
   platform_region            = "india"
   shared_resource_identifier = "live"
-  root_domain                = "app.turnthebus.org"
+  root_domain                = "turnthebus.org"
   aws_region                 = "ap-south-1"
   account_id                 = "293205054626"
 

@@ -27,10 +27,10 @@ cookiecutter --checkout $GITHUB_BRANCH \
              global_platform_region=india \
              global_aws_region=ap-south-1 \
              global_account_id=293205054626 \
-             global_root_domain=app.turnthebus.org \
-             global_aws_route53_hosted_zone_id=Z0540686GYG3QL4XM567 \
+             global_root_domain=turnthebus.org \
+             global_aws_route53_hosted_zone_id=Z03502332QN1JJS64O426 \
              environment_name=prod \
-             environment_subdomain=staging \
+             environment_subdomain=cc \
              eks_worker_group_instance_type=t3.xlarge \
              eks_worker_group_min_size=0 \
              eks_worker_group_max_size=1 \

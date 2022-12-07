@@ -11,7 +11,7 @@ locals {
   global_vars = read_terragrunt_config(find_in_parent_folders("global.hcl"))
 
   environment               = "prod"
-  environment_subdomain     = "staging"
+  environment_subdomain     = "cc"
   environment_domain        = "${local.environment_subdomain}.${local.global_vars.locals.root_domain}"
   environment_namespace     = "${local.global_vars.locals.platform_name}-${local.global_vars.locals.platform_region}-${local.environment}"
   shared_resource_namespace = "${local.global_vars.locals.platform_name}-${local.global_vars.locals.platform_region}-${local.global_vars.locals.shared_resource_identifier}"

@@ -25,4 +25,4 @@ spec:
           # for the environment domain.
           route53:
             region: ap-south-1
-            hostedZoneID: Z03502332QN1JJS64O426
+            hostedZoneID: Z03848212EAMWCUJUHPC7

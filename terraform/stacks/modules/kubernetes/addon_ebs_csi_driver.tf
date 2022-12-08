@@ -21,12 +21,13 @@ resource "aws_iam_role" "AmazonEKS_EBS_CSI_DriverRole" {
         {
             "Effect": "Allow",
             "Principal": {
-                "Federated": "arn:aws:iam::293205054626:oidc-provider/oidc.eks.ap-south-1.amazonaws.com/id/29C2181790F788712E6BBACEDE43DB0D"
+                "Federated": "arn:aws:iam::293205054626:oidc-provider/${module.eks. oidc_provider}"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
                 "StringEquals": {
-                    "oidc.eks.ap-south-1.amazonaws.com/id/29C2181790F788712E6BBACEDE43DB0D:aud": "sts.amazonaws.com"
+                    "${module.eks. oidc_provider}:aud": "sts.amazonaws.com",
+                    "${module.eks. oidc_provider}:sub": "system:serviceaccount:kube-system:ebs-csi-controller-sa"
                 }
             }
         }

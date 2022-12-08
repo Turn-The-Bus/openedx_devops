@@ -16,27 +16,27 @@ data "aws_iam_policy" "AmazonEBSCSIDriverPolicy" {
 resource "aws_iam_role" "AmazonEKS_EBS_CSI_DriverRole" {
   name = "AmazonEKS_EBS_CSI_DriverRole"
   assume_role_policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::293205054626:oidc-provider/${module.eks. oidc_provider}"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "${module.eks. oidc_provider}:aud": "sts.amazonaws.com",
-                    "${module.eks. oidc_provider}:sub": "system:serviceaccount:kube-system:ebs-csi-controller-sa"
-                }
-            }
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "Federated" : "arn:aws:iam::293205054626:oidc-provider/${module.eks.oidc_provider}"
+        },
+        "Action" : "sts:AssumeRoleWithWebIdentity",
+        "Condition" : {
+          "StringEquals" : {
+            "${module.eks.oidc_provider}:aud" : "sts.amazonaws.com",
+            "${module.eks.oidc_provider}:sub" : "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+          }
         }
+      }
     ]
-})
+  })
   tags = var.tags
 }
 
-# 3. Attach the required AWS managed policy to the role 
+# 3. Attach the required AWS managed policy to the role
 resource "aws_iam_role_policy_attachment" "aws_ebs_csi_driver" {
   role       = aws_iam_role.AmazonEKS_EBS_CSI_DriverRole.name
   policy_arn = data.aws_iam_policy.AmazonEBSCSIDriverPolicy.arn

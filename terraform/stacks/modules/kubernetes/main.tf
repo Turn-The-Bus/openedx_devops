@@ -81,8 +81,8 @@ module "eks" {
   )
 
   cluster_addons = {
-    coredns = {}
-    kube-proxy = {}
+    coredns            = {}
+    kube-proxy         = {}
     aws-ebs-csi-driver = {}
   }
 
@@ -160,4 +160,3 @@ resource "kubernetes_namespace" "namespace-shared" {
   }
   depends_on = [module.eks]
 }
-

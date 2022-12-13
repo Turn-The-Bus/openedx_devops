@@ -1,7 +1,8 @@
 # openedx-mongo-20220912T080001.tgz
 
-S3_BUCKET="backups.academiacentral.org"
-BACKUP_KEY="20220912T080001"
+MONGODB_HOST="mongodb.master.app.turnthebus.org:27017"
+S3_BUCKET="ttb-india-prod-backup"
+BACKUP_KEY="20221213T171420"
 
 BACKUP_TARBALL="openedx-mongo-$BACKUP_KEY.tgz"
 BACKUP_FILE="mongo-dump-$BACKUP_KEY"
@@ -18,10 +19,9 @@ if [ ! -f "~/backups/mongodb/$BACKUP_FILE" ]; then
     cd ~
 fi
 
-#mongo 'mongodb://mongodb.tmp.global-communications-academy.com:27017'
-mongo
-use academiacentral_staging_edx;
+mongo $MONGODB_HOST
+use ttb_prod_edx;
 db.dropDatabase();
 exit
 
-mongorestore -d academiacentral_staging_edx ~/backups/mongodb/mongo-dump-${BACKUP_KEY}/edxapp --host mongodb.moocweb.com
+mongorestore -d ttb_prod_edx ~/backups/mongodb/mongo-dump-${BACKUP_KEY}/edxapp --host $MONGODB_HOST

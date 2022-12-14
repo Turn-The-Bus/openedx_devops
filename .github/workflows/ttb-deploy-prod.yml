@@ -257,7 +257,7 @@ jobs:
       - name: Set theme
         shell: bash
         run:  |-
-          tutor k8s settheme turnthebus-edx-theme
+          tutor k8s do settheme turnthebus-edx-theme
 
       - name: Create admin user
         uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.0

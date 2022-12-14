@@ -105,7 +105,7 @@ jobs:
           echo "TUTOR_LMS_HOST=$LMS_HOSTNAME" >> $GITHUB_ENV
           echo "TUTOR_CMS_HOST=$CMS_HOSTNAME" >> $GITHUB_ENV
           echo "TUTOR_DOCKER_IMAGE_OPENEDX=${AWS_ECR_REPOSITORY_OPENEDX}" >> $GITHUB_ENV
-          echo "OPENEDX_COMMON_VERSION=open-release/maple.1" >> $GITHUB_ENV
+          echo "OPENEDX_COMMON_VERSION=open-release/nutmeg.2" >> $GITHUB_ENV
 
       # ---------------------------------------------------------------------------------
       # Configure optional tutor plugins

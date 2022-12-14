@@ -11,17 +11,18 @@
 #------------------------------------------------------------------------------
 
 S3_BUCKET="ttb-india-prod-backup"
-BACKUP_KEY="20221213T171420"
+BACKUP_KEY="20221214T161333"
 BACKUP_TARBALL="openedx-mysql-$BACKUP_KEY.tgz"
 BACKUP_FILE="mysql-data-$BACKUP_KEY.sql"
+BACKUPS_DIRECTORY="/home/ubuntu/backups/"
 
-if [ ! -f "~/backups/mysql/$BACKUP_TARBALL" ]; then
-    aws s3 cp s3://$S3_BUCKET/backups/$BACKUP_TARBALL ~/backups/mysql/
+if [ ! -f "~/backups/$BACKUP_TARBALL" ]; then
+    aws s3 cp s3://$S3_BUCKET/backups/$BACKUP_TARBALL ~/backups/
 fi
 
-if [ ! -f "~/backups/mysql/$BACKUP_FILE" ]; then
+if [ ! -f "~/backups/$BACKUP_FILE" ]; then
     echo "decompressing..."
-    cd ~/backups/mysql
+    cd ~/backups/
     tar xvzf $BACKUP_TARBALL
     cd ~
 fi
@@ -38,4 +39,4 @@ fi
 $(ksecret.sh mysql-root ttb-india-live)
 
 echo "importing to $MYSQL_HOST"
-mysql -h $MYSQL_HOST  -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD < ~/backups/mysql/$BACKUP_FILE
+mysql -h $MYSQL_HOST  -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD < ~/backups/$BACKUP_FILE

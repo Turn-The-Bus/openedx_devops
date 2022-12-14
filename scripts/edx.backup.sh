@@ -13,8 +13,8 @@
 # reference:  https://github.com/edx/edx-documentation/blob/master/en_us/install_operations/source/platform_releases/ginkgo.rst
 #---------------------------------------------------------
 
-MYSQL_PWD="ADD-ME-PLEASE"     #Add your MySQL root password, if one is set. Otherwise set to a null string
-MONGODB_PWD="ADD-ME-PLEASE"      #Add your MongoDB admin password from your my-passwords.yml file in the ubuntu home folder.
+MYSQL_PWD="SET-ME-PLEASE"     #Add your MySQL root password, if one is set. Otherwise set to a null string
+MONGODB_PWD="SET-ME-PLEASE"      #Add your MongoDB admin password from your my-passwords.yml file in the ubuntu home folder.
 
 S3_BUCKET="ttb-india-prod-backup"           # For this script to work you'll first need the following:
                                             # - create an AWS S3 Bucket
@@ -53,7 +53,7 @@ cd ${WORKING_DIRECTORY}
 #------------------------------------------------------------------------------------------------------------------------
 echo "Backing up MySQL databases"
 echo "Reading MySQL database names..."
-mysql -h $MYSQL_HOST -uroot -p"$MYSQL_PWD" -ANe "SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('mysql','sys','information_schema','performance_schema')" > /tmp/db.txt
+mysql -h $MYSQL_HOST -uroot -p"$MYSQL_PWD" -ANe "SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('mysql','sys','innodb','tmp','information_schema','performance_schema')" > /tmp/db.txt
 DBS="--databases $(cat /tmp/db.txt)"
 NOW="$(date +%Y%m%dT%H%M%S)"
 SQL_FILE="mysql-data-${NOW}.sql"

@@ -66,7 +66,7 @@ jobs:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
           aws-region: ${{ env.AWS_REGION }}
-          tutor-version: "14.0.5"
+          tutor-version: "15.1.0"
 
       # Setup a connection to our AWS Elastic Container Registry so that we can pull
       # containers that we created with the build workflows in this Cookiecutter.

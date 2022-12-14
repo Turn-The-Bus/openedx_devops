@@ -260,7 +260,7 @@ jobs:
           tutor k8s do settheme turnthebus-edx-theme
 
       - name: Create admin user
-        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.0
+        uses: openedx-actions/tutor-k8s-configure-edx-admin@v1.0.1
         with:
           namespace: ${{ env.NAMESPACE }}
 

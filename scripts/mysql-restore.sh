@@ -40,3 +40,7 @@ $(ksecret.sh mysql-root ttb-india-live)
 
 echo "importing to $MYSQL_HOST"
 mysql -h $MYSQL_HOST  -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD < ~/backups/$BACKUP_FILE
+
+echo "migrating openedx database"
+mysql -h $MYSQL_HOST -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD -e "DROP DATABASE IF EXISTS ttb_prod_edx; CREATE DATABASE ttb_prod_edx CHARACTER SET utf8 COLLATE utf8_general_ci;"
+mysqldump --set-gtid-purged=OFF --column-statistics=0 -h $MYSQL_HOST -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD openedx | mysql -h $MYSQL_HOST  -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD -D ttb_prod_edx

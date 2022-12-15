@@ -5,13 +5,15 @@
 #
 # date:         dec-2022
 #
-# usage:        download a MongoDB tarball backup from AWS S3
+# usage:        run this locally on the MongoDB host
+#               download a MongoDB tarball backup from AWS S3
 #               decompress the contents
+#               restore to the local mongodb service
 #------------------------------------------------------------------------------
 
 MONGODB_HOST="mongo"
 S3_BUCKET="ttb-india-prod-backup"
-BACKUP_KEY="20221214T161333"
+BACKUP_KEY="20221214T215343"
 
 BACKUP_TARBALL="openedx-mongo-$BACKUP_KEY.tgz"
 BACKUP_FILE="mongo-dump-$BACKUP_KEY"
@@ -36,8 +38,8 @@ if [ ! -f "${BACKUPS_DIRECTORY}${BACKUP_FILE}" ]; then
 fi
 
 mongo $MONGODB_HOST
-`use ttb_prod_edx`;
-`db.dropDatabase()`;
+use ttb_prod_edx
+db.dropDatabase()
 exit
 
-mongorestore -d ttb_prod_edx ${BACKUPS_DIRECTORY}mongo-dump-${BACKUP_KEY}/edxapp 
+mongorestore -d ttb_prod_edx ${BACKUPS_DIRECTORY}mongo-dump-${BACKUP_KEY}/openedx

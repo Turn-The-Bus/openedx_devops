@@ -11,7 +11,7 @@
 #------------------------------------------------------------------------------
 
 S3_BUCKET="ttb-india-prod-backup"
-BACKUP_KEY="20221214T161333"
+BACKUP_KEY="20221214T213613"
 BACKUP_TARBALL="openedx-mysql-$BACKUP_KEY.tgz"
 BACKUP_FILE="mysql-data-$BACKUP_KEY.sql"
 BACKUPS_DIRECTORY="/home/ubuntu/backups/"

@@ -11,10 +11,9 @@
 #             combine into a single tarball, store in "backups" folders in user directory
 #
 # reference:  https://github.com/edx/edx-documentation/blob/master/en_us/install_operations/source/platform_releases/ginkgo.rst
+#             https://docs.aws.amazon.com/documentdb/latest/developerguide/backup_restore-dump_restore_import_export_data.html
+#             https://jainsaket-1994.medium.com/part-1-migration-of-aws-documentdb-to-atlas-mongodb-9c241d529039
 #---------------------------------------------------------
-
-MYSQL_PWD="SET-ME-PLEASE"     #Add your MySQL root password, if one is set. Otherwise set to a null string
-MONGODB_PWD="SET-ME-PLEASE"      #Add your MongoDB admin password from your my-passwords.yml file in the ubuntu home folder.
 
 S3_BUCKET="ttb-india-prod-backup"           # For this script to work you'll first need the following:
                                             # - create an AWS S3 Bucket
@@ -22,8 +21,12 @@ S3_BUCKET="ttb-india-prod-backup"           # For this script to work you'll fir
                                             # - install AWS Command Line Tools in your Ubuntu EC2 instance
                                             # run aws configure to add your IAM key and secret token
 #------------------------------------------------------------------------------------------------------------------------
-MONGODB_HOST="mongodb.master.app.turnthebus.org:27017"
+MONGODB_HOST="app-turnthebus-mumbai-mongodb-1.clhs4wmx87b6.ap-south-1.docdb.amazonaws.com:27017"
+MONGODB_PWD="SET-ME-PLEASE"      #Add your MongoDB admin password from your my-passwords.yml file in the ubuntu home folder.
+
 MYSQL_HOST="mysql.app.turnthebus.org"
+MYSQL_PWD="SET-ME-PLEASE"     #Add your MySQL root password, if one is set. Otherwise set to a null string
+
 
 BACKUPS_DIRECTORY="/home/ubuntu/backups/"
 WORKING_DIRECTORY="/home/ubuntu/backup-tmp/"
@@ -64,8 +67,6 @@ echo "Done backing up MySQL"
 #Tarball our mysql backup file
 echo "Compressing MySQL backup into a single tarball archive"
 tar -czf ${BACKUPS_DIRECTORY}openedx-mysql-${NOW}.tgz ${SQL_FILE}
-sudo chown root ${BACKUPS_DIRECTORY}openedx-mysql-${NOW}.tgz
-sudo chgrp root ${BACKUPS_DIRECTORY}openedx-mysql-${NOW}.tgz
 echo "Created tarball of backup data openedx-mysql-${NOW}.tgz"
 # End Backup MySQL databases
 #------------------------------------------------------------------------------------------------------------------------
@@ -74,7 +75,7 @@ echo "Created tarball of backup data openedx-mysql-${NOW}.tgz"
 # Begin Backup Mongo
 #------------------------------------------------------------------------------------------------------------------------
 echo "Backing up MongoDB"
-for db in edxapp cs_comment_service_development; do
+for db in openedx cs_comment_service_development; do
     echo "Dumping Mongo db ${db}..."
     mongodump --host="$MONGODB_HOST"  -u root -p"$MONGODB_PWD" --authenticationDatabase admin -d ${db} --out mongo-dump-${NOW}
 done
@@ -83,8 +84,6 @@ echo "Done backing up MongoDB"
 #Tarball all of our backup files
 echo "Compressing backups into a single tarball archive"
 tar -czf ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz mongo-dump-${NOW}
-sudo chown root ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
-sudo chgrp root ${BACKUPS_DIRECTORY}openedx-mongo-${NOW}.tgz
 echo "Created tarball of backup data openedx-mongo-${NOW}.tgz"
 # End Backup Mongo
 #------------------------------------------------------------------------------------------------------------------------

@@ -269,7 +269,7 @@ resource "aws_eip" "elasticip" {
 
 resource "aws_route53_record" "bastion" {
   zone_id = data.aws_route53_zone.stack.id
-  name    = "bastion.aws.${var.root_domain}"
+  name    = "bastion.${var.root_domain}"
   type    = "A"
   ttl     = "600"
 

@@ -5,17 +5,16 @@
 #             https://blog.lawrencemcdaniel.com
 #
 # date:       sep-2022
-# usage:      backup MySQL database
+# usage:      backup MySQL and MongoDB data stores
 #             combine into a single tarball, store in "backups" folders in user directory
 #
 # reference:  https://github.com/edx/edx-documentation/blob/master/en_us/install_operations/source/platform_releases/ginkgo.rst
 #------------------------------------------------------------------------------
 
 S3_BUCKET="ttb-india-prod-storage"
-
 BACKUPS_DIRECTORY="~/backups/"
 WORKING_DIRECTORY="~/backup-tmp/"
-NUMBER_OF_BACKUPS_TO_RETAIN="10"      # Note: this only regards local storage (ie on the ubuntu server).
+NUMBER_OF_BACKUPS_TO_RETAIN="5"      # Note: this only regards local storage (ie on the ubuntu server).
                                       # All backups are retained in the S3 bucket forever.
 
 #------------------------------------------------------------------------------

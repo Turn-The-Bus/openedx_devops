@@ -13,22 +13,13 @@
 # mongo 'mongodb://${MONGODB_HOST}:27017'
 #---------------------------------------------------------
 
+
+MONGODB_HOST="mongodb.turnthebus.org:27017"
 S3_BUCKET="ttb-india-prod-storage"
 
 BACKUPS_DIRECTORY="/home/ubuntu/backups/"
 WORKING_DIRECTORY="/home/ubuntu/backup-tmp/"
 NUMBER_OF_BACKUPS_TO_RETAIN="10"      #Note: this only regards local storage (ie on the ubuntu server). All backups are retained in the S3 bucket forever.
-
-#------------------------------------------------------------------------------
-# retrieve the mongo admin credentials from k8s secrets. Sets the following environment variables:
-#
-# MONGODB_ADMIN_PASSWORD: *******
-# MONGODB_ADMIN_USERNAME: admin
-# MONGODB_HOST: mongodb.turnthebus.org
-# MONGODB_PORT: "27017"
-#
-#------------------------------------------------------------------------------
-$(ksecret.sh mongodb-admin ttb-india-live)
 
 #Check to see if a working folder exists. if not, create it.
 if [ ! -d ${WORKING_DIRECTORY} ]; then

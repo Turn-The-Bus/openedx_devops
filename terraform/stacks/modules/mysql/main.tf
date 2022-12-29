@@ -7,7 +7,7 @@
 # usage: create an RDS MySQL instance.
 #------------------------------------------------------------------------------
 locals {
-  host_name = "mysql.aws.${var.root_domain}"
+  host_name = "mysql.${var.root_domain}"
 }
 
 data "aws_route53_zone" "stack" {

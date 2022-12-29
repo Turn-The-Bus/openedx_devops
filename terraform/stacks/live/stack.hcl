@@ -53,13 +53,13 @@ locals {
   kubernetes_version = "1.24"
   eks_worker_group_instance_type = "t3.xlarge"
   eks_worker_group_min_size = 0
-  eks_worker_group_max_size = 1
+  eks_worker_group_max_size = 0
   eks_worker_group_desired_size = 0
 
   eks_karpenter_group_instance_type = "t3.large"
-  eks_karpenter_group_min_size = 3
-  eks_karpenter_group_max_size =  10
-  eks_karpenter_group_desired_size =  3
+  eks_karpenter_group_min_size = 1
+  eks_karpenter_group_max_size =  3
+  eks_karpenter_group_desired_size =  1
 
   tags = {
     Stack = local.stack
